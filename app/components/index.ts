@@ -7,7 +7,6 @@ export { InputError } from "./InputError";
 export { ThemeSwitch } from "./ThemeSwitch";
 export { VideoDialog } from "./VideoDialog";
 export { WaitlistForm } from "./WaitlistForm";
-export { CookieConsent } from "./CookieConsent";
 
 export {
   fadeInOut,

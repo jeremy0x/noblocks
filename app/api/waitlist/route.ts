@@ -1,15 +1,17 @@
 import { NextResponse } from "next/server";
 import client from "@sendgrid/client";
 
-const apiKey = process.env.NEXT_PUBLIC_SENDGRID_API_KEY;
-
-if (!apiKey) {
-  throw new Error("SENDGRID_API_KEY is not defined");
-}
-
-client.setApiKey(apiKey);
-
 export async function POST(request: Request) {
+  const apiKey = process.env.SENDGRID_API_KEY;
+
+  if (!apiKey) {
+    return NextResponse.json(
+      { message: "SendGrid API key is not configured" },
+      { status: 500 }
+    );
+  }
+
+  client.setApiKey(apiKey);
   const { email } = await request.json();
 
   if (!email) {
