@@ -1,6 +1,11 @@
 "use client";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
-import { ToastContainer } from "react-toastify";
+
+const ToastContainer = dynamic(
+  () => import("react-toastify").then((mod) => mod.ToastContainer),
+  { ssr: false }
+);
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
